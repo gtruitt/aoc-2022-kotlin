@@ -1,1 +1,1 @@
-# aoc-2023-kotlin
+# aoc-2022-kotlin
