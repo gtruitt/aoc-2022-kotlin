@@ -3,7 +3,8 @@ import kotlin.math.max
 tailrec fun highestTotal(
     foodItems: List<String>,
     currentTotal: Int = 0,
-    highestTotal: Int = 0): Int =
+    highestTotal: Int = 0
+): Int =
     when {
         foodItems.tail.isEmpty() -> highestTotal
         foodItems.head.isEmpty() -> highestTotal(foodItems.tail, 0, max(currentTotal, highestTotal))
