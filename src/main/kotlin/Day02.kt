@@ -44,14 +44,8 @@ val GameRound.score
         else -> 0
     }
 
-tailrec fun totalScore(
-    encryptedRounds: List<String>,
-    currentTotal: Int = 0
-): Int =
-    if (encryptedRounds.tail.isEmpty()) currentTotal
-    else totalScore(
-        encryptedRounds.tail,
-        currentTotal + encryptedRounds.head.toGameRound().score)
+fun totalScore(encryptedRounds: List<String>) =
+    encryptedRounds.filter { it.isNotEmpty() }.sumOf { it.toGameRound().score }
 
 // X = I lose, Y = draw, Z = I win
 fun myPlay(theirPlay: Play, myEncryptedPlay: String) =
@@ -68,12 +62,5 @@ fun String.toRevisedGameRound(): GameRound {
     return GameRound(theirPlay, myPlay(theirPlay, encryptedPlays.last()))
 }
 
-tailrec fun revisedTotalScore(
-    encryptedRounds: List<String>,
-    currentTotal: Int = 0
-): Int =
-    if (encryptedRounds.tail.isEmpty()) currentTotal
-    else revisedTotalScore(
-        encryptedRounds.tail,
-        currentTotal + encryptedRounds.head.toRevisedGameRound().score
-    )
+fun revisedTotalScore(encryptedRounds: List<String>) =
+    encryptedRounds.filter { it.isNotEmpty() }.sumOf { it.toRevisedGameRound().score }
