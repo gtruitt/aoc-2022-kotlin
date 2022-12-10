@@ -1,3 +1,6 @@
+@file:Suppress("PackageDirectoryMismatch")
+package day04
+
 fun assignmentPairToRangePair(assignmentPair: String) =
     assignmentPair
         .split(',', '-')

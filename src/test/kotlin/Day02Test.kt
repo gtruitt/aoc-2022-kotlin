@@ -1,3 +1,5 @@
+import day02.totalScore
+import day02.revisedTotalScore
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 

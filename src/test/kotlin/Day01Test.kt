@@ -1,3 +1,5 @@
+import day01.highestTotal
+import day01.sumTopTotals
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 

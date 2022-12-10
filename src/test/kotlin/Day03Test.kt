@@ -1,3 +1,6 @@
+import day03.priority
+import day03.sumOfMisplacedPriorities
+import day03.sumOfBadgePriorities
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 

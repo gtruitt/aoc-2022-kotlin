@@ -1,3 +1,6 @@
+@file:Suppress("PackageDirectoryMismatch")
+package day02
+
 enum class Play(val score: Int) {
     ROCK(1),
     PAPER(2),

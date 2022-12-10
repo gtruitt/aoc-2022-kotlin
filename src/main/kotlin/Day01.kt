@@ -1,4 +1,9 @@
+@file:Suppress("PackageDirectoryMismatch")
+package day01
+
 import kotlin.math.max
+import head
+import tail
 
 tailrec fun highestTotal(
     foodItems: List<String>,

@@ -1,6 +1,8 @@
+import day04.assignmentPairToRangePair
+import day04.fullyOverlappingPairCount
+import day04.overlappingPairCount
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
-import org.w3c.dom.ranges.Range
 
 class Day04Test {
     @Test

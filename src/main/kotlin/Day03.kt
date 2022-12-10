@@ -1,3 +1,6 @@
+@file:Suppress("PackageDirectoryMismatch")
+package day03
+
 val Char.priority
     get() = when {
         isLowerCase() -> code - 96
