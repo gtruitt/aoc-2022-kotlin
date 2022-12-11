@@ -5,17 +5,6 @@ import kotlin.math.max
 import head
 import tail
 
-tailrec fun highestTotal(
-    foodItems: List<String>,
-    currentTotal: Int = 0,
-    highestTotal: Int = 0
-): Int =
-    when {
-        foodItems.tail.isEmpty() -> highestTotal
-        foodItems.head.isEmpty() -> highestTotal(foodItems.tail, 0, max(currentTotal, highestTotal))
-        else -> highestTotal(foodItems.tail, currentTotal + foodItems.head.toInt(), highestTotal)
-    }
-
 tailrec fun sumTopTotals(
     foodItems: List<String>,
     topCount: Int,
