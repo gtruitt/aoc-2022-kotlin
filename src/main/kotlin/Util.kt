@@ -3,10 +3,10 @@ import kotlin.math.max
 fun resourceLines(resourceName: String) =
     object {}::class.java.getResource(resourceName)!!.readText().lines()
 
-val <T> List<T>.head: T
+val <T> Iterable<T>.head: T
     get() = first()
 
-val <T> List<T>.tail: List<T>
+val <T> Iterable<T>.tail: List<T>
     get() = drop(1)
 
 fun <T> List<List<T>>.transpose(): List<List<T>> {
