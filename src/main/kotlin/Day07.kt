@@ -23,7 +23,7 @@ fun String.doCd(cmd: String) =
         else -> split(PATH_SEP).plus(cmd.tokens.component3()).joinToString(PATH_SEP)
     }
 
-fun Map<String, Int>.sumOrSet(key: String, value: Int) =
+fun Map<String, Int>.addAtKey(key: String, value: Int) =
     plus(key to getOrDefault(key, 0).plus(value))
 
 tailrec fun readTerm(
@@ -37,8 +37,8 @@ tailrec fun readTerm(
     }
     return when {
         lines.tail.isEmpty() -> pathSizes
-        lines.head.isCd -> readTerm(lines.tail, newPath, pathSizes.sumOrSet(newPath, 0))
-        lines.head.isFile -> readTerm(lines.tail, newPath, pathSizes.sumOrSet(newPath, lines.head.fileSize))
+        lines.head.isCd -> readTerm(lines.tail, newPath, pathSizes.addAtKey(newPath, 0))
+        lines.head.isFile -> readTerm(lines.tail, newPath, pathSizes.addAtKey(newPath, lines.head.fileSize))
         else -> readTerm(lines.tail, currentPath, pathSizes)
     }
 }
@@ -54,3 +54,14 @@ fun sumOfEligibleDirectories(terminalOutput: List<String>, maxSize: Int) =
         .filter { it.value <= maxSize }
         .values
         .sum()
+
+const val DISK_SIZE = 70000000
+const val SPACE_NEEDED = 30000000
+
+fun sizeOfSmallestDirectory(terminalOutput: List<String>) =
+    readTerm(terminalOutput)
+        .rollUpDirectorySizes()
+        .let { dirSizes ->
+            val freeSpace = DISK_SIZE - dirSizes.values.max()
+            dirSizes.filter {  freeSpace + it.value >= SPACE_NEEDED }.values.min()
+        }
