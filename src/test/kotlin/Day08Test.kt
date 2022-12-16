@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 
 class Day08Test {
     @Test
-    fun `reads forest into 2D list`() {
+    fun `counts trees visible from outside the forest`() {
         visibleTreeCount(resourceLines("Day08.txt")) shouldBe 1812
     }
 }
